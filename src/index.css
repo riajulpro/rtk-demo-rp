@@ -2,12 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-.productGrid {
+.productPanel {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 }
 
-.sidebar > .active {
-  background: #0c6cfd;
-  color: white;
+.aside > .active {
+  border-bottom: 4px solid #0c6cfd;
+  border-left: 4px solid #0c6cfd;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #efffee, #fff);
 }

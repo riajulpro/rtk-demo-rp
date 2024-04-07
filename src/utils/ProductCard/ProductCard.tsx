@@ -4,8 +4,9 @@ import {
   useUpdateProductMutation,
 } from "../../redux/features/api/apiSlice";
 
-const ProductCard = ({ data }) => {
-  const { id, title, price, description, category, image, rating } = data || {};
+const ProductCard = ({ data: product }) => {
+  const { id, title, price, description, category, image, rating } =
+    product || {};
 
   // modal ref ---
   const modalRef = useRef(null);
@@ -15,9 +16,10 @@ const ProductCard = ({ data }) => {
 
   // product delete function-----
   const handleDelete = () => {
-    deleteProduct(data);
+    deleteProduct(product);
   };
-  const hs = (e) => {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     const titleUpdate = "new tittle";
     const priceUpdate = 99;
@@ -33,20 +35,24 @@ const ProductCard = ({ data }) => {
       modalRef.current?.close();
     });
   };
+
   return (
     <div className="card w-full bg-base-100 shadow-xl">
-      <figure className="w-full h-[200px]">
+      <figure className="w-full h-[375px]">
         <img src={image} alt="Shoes" className="w-full h-full object-fill" />
       </figure>
       <div className="flex flex-col gap-[10px] p-[20px]">
         <h2 className="card-title">{title.slice(0, 50)}</h2>
         <p>{description.slice(0, 100)}...</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary" onClick={handleDelete}>
+          <button
+            className="btn bg-red-600 hover:bg-red-400 text-white"
+            onClick={handleDelete}
+          >
             Delete
           </button>
           <button
-            className="btn btn-primary"
+            className="btn bg-green-600 text-white hover:bg-green-400"
             onClick={() => modalRef.current?.showModal()}
           >
             Update
@@ -62,7 +68,7 @@ const ProductCard = ({ data }) => {
 
           <div className="modal-action">
             <form
-              onSubmit={hs}
+              onSubmit={handleSubmit}
               method="dialog"
               className="w-full flex flex-col justify-center items-center gap-[10px]"
             >

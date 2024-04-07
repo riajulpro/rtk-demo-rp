@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 
-const Sidebar = () => {
+const Aside = () => {
   return (
-    <div className="w-[270px] h-full bg-[#535c68 p-[20px]">
-      <div className="flex flex-col gap-[5px] sidebar">
+    <div className="w-[270px] h-full bg-[#fff3f3] p-[20px]">
+      <div className="flex flex-col gap-[5px] aside">
         <NavLink to={"/"} className="px-[10px] py-[12px] rounded-[8px]">
           Products
         </NavLink>
@@ -15,4 +15,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default Aside;
